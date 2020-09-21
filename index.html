@@ -2,18 +2,24 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP  -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://localhost:*; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
+    <title>Electron Demo</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
+  <h1>A Desktop App built in Electron to launch programs</h1>
+    Versions: Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
     and Electron <span id="electron-version"></span>.
 
-    <!-- You can also require other files to run in this process -->
+  <div id="main_body">
+    <label for="fname">Username</label><br>
+    <input type="text" id="username" name="username" value="employee1"><br>
+    <label for="lname">Password</label><br>
+    <input type="text" id="password" name="password" value="mypassword"><br><br>
+    <button id='login_submit'> Submit </button>
+  </div>
     <script src="./renderer.js"></script>
   </body>
 </html>

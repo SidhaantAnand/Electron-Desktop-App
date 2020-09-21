@@ -1,6 +1,9 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
+const { spawn } = require('child_process');
 const path = require('path')
+const express = require('express')
+const expressApp = express();
 
 function createWindow () {
   // Create the browser window.
@@ -8,7 +11,8 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true
     }
   })
 
@@ -41,3 +45,11 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+expressApp.post('/launch/:program', function(req,res) {
+  if(req.params.program == 'snip') {
+
+  }
+
+
+})
+expressApp.listen(7000, () => console.log('Server ready'))
