@@ -1,13 +1,7 @@
-<button id="snip">Trigger Snipping Tool</button>
-  <br>
-  <br>
-  <button id="ie">Trigger Internet Explorer</button>
-  <br>
-  <br>
-  <button id="paint">Trigger Paint</button>
-  <br>
-  <br>
-  <button id="note">Trigger NotePad</button>
+<button id="snip" type="button" class="btn btn-primary">Trigger Snipping Tool</button>
+<button id="ie" type="button" class="btn btn-success">Trigger Internet Explorer</button>
+<button id="paint" type="button" class="btn btn-warning">Trigger Paint</button>
+<button id="note" type="button" class="btn btn-danger">Trigger NotePad</button>
   <br>
   <br>
 
@@ -17,7 +11,6 @@
     <li>CSP rules - only get content from trusted sources, block inline JS thus stop Injection attacks, enable reporting</li>
   </ul>
 
-  <br>
 <h3> Pros of Electron </h3>
   <ul>
     <li>NodeJS runtime - exposes a wide set of libaries and capabilities of Node,npm init</li>
@@ -25,5 +18,13 @@
     <li>Ability to use common web technologies - HTML, jQuery etc, Dev team is familiar with</li>
     <li>Cross Platform, Open Source</li>
     <li>Integration with CI systems like Jenkins</li>
-    <li> Electron is more popular than .NET in terms of GitHub stars,forks</li>
+    <li>Electron is more popular than .NET in terms of GitHub stars,forks</li>
+    <li>Secure Coding practices: https://github.com/electron/electron/blob/master/docs/tutorial/security.md</li>
+  </ul>
+
+<h3> Cons of Electron </h3>
+  <ul>
+    <li>Electron App comes with its own version of Chromium which is quite heavy </li>
+    <li>Native Dependencies would make the app not cross-platform</li>
+    <li>No source code encryption or hidden - we would need to package source code with asar + Obfuscation by some library</li>
   </ul>

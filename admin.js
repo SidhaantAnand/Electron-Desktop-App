@@ -1,59 +1,44 @@
-document.getElementById('snip').onclick = function(){
-	  alert("Loading Snipping tool");
-	  exec("SnippingTool.exe", (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-});
+function launchNotepad()  {
+    alert("Launching Notepad")
+    $.post('http://localhost:7000/launch', {
+        'notepad':true
+    });
+
+    return;
 }
 
-document.getElementById('ie').onclick = function(){
-	  alert("Loading IE");
-	  exec("iexplore.exe", (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-});
+function launchSnip() {
+    alert("Launching Snipping Tool")
+    $.post('http://localhost:7000/launch', {
+        'snipping':true
+    });
+
+    return;
 }
 
-document.getElementById('paint').onclick = function(){
-	  alert("Loading MSPaint");
-	  exec("mspaint.exe", (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-});
+function launchIE() {
+    alert("Launching IE")
+    $.post('http://localhost:7000/launch', {
+        'ie':true
+    });
+
+    return;
 }
 
-document.getElementById('note').onclick = function(){
-	  alert("Loading NotePad");
-	  exec("notepad.exe", (error, stdout, stderr) => {
-    if (error) {
-        console.log(`error: ${error.message}`);
-        return;
-    }
-    if (stderr) {
-        console.log(`stderr: ${stderr}`);
-        return;
-    }
-    console.log(`stdout: ${stdout}`);
-});
+function launchPaint() {
+    alert("Launching MSPaint")
+    $.post('http://localhost:7000/launch', {
+        'paint':true
+    });
+
+    return;
 }
+
+
+document.getElementById('snip').onclick = launchSnip;
+
+document.getElementById('ie').onclick = launchIE;
+
+document.getElementById('paint').onclick = launchPaint;
+
+document.getElementById('note').onclick = launchNotepad;

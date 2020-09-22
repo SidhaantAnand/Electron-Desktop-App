@@ -1,25 +1,79 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP  -->
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP 
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://localhost:*; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">  -->
+
+    <style>
+      #main_body {
+        margin: 20px;
+        border: 3px solid green;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+
+      #username, #password {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      #login_submit {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      #login_submit:hover {
+        background-color: #45a049;
+      }
+
+      h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 110px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+
+      h3 { color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0; text-align: center; }
+
+      label {
+        text-align: center
+      }
+
+      #version_body {
+        margin-left: 160px;
+        margin-right: 30px;
+      }
+
+    </style>
     <title>Electron Demo</title>
   </head>
   <body>
-  <h1>A Desktop App built in Electron to launch programs</h1>
-    Versions: Node.js <span id="node-version"></span>,
+  <h1>Electron</h1>
+    <div id="version_body"> Versions: Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    and Electron <span id="electron-version"></span> </div>
 
   <div id="main_body">
-    <label for="fname">Username</label><br>
+    <label for="username">Username</label><br>
     <input type="text" id="username" name="username" value="employee1"><br>
-    <label for="lname">Password</label><br>
+    <label for="password">Password</label><br>
     <input type="text" id="password" name="password" value="mypassword"><br><br>
     <button id='login_submit'> Submit </button>
   </div>
     <script src="./renderer.js"></script>
+    <script>if (window.module) module = window.module;</script>
+
   </body>
 </html>
