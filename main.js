@@ -5,7 +5,7 @@ const path = require('path')
 const express = require('express')
 const expressApp = express();
 const bodyParser = require('body-parser');
-const proxy = require('./proxy.js');
+const router = require('./router.js');
 const session = require('express-session');
 
 function createWindow () {
@@ -46,11 +46,15 @@ app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+expressApp.use('/', function(req,res,next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:7500')
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Authorization');
+  next();
+})
 expressApp.use(bodyParser.urlencoded({ extended: true }));
 expressApp.use(bodyParser.json());
 expressApp.use(session({secret: "secret!"}));
-expressApp.use('/',  proxy);
 
+expressApp.use('/',  router);
 expressApp.listen(7000, () => console.log('Server ready'))
