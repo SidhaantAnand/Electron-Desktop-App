@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios')
+require('dotenv').config()
 
 const app = express();
 
@@ -8,7 +9,7 @@ app.use('/',function(req,res,next) {
   const auth_header = req.headers.authorization
   if(auth_header) {
   	const key = auth_header.substring(auth_header.indexOf(' ')+1)
-  	if(key == 'secret_key')
+  	if(key == process.env.SECRET_TOKEN)
   		next();
   }
   return

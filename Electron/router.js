@@ -4,13 +4,15 @@ const axios = require('axios')
 const qs = require('querystring')
 const jwt_decode = require('jwt-decode')
 const fs = require('fs');
+require('dotenv').config()
 const launch = require('./launch')
-const openwhisk_url = "http://localhost:8080/auth/realms/demo/protocol/openid-connect/token"
-const proxy_auth = "http://localhost:7001/auth"
-const proxy_files = "http://localhost:7001/files"
+const constants = require('./constants.json')
+const openwhisk_url = constants.hosts.openwhisk
+const proxy_auth = constants.hosts.proxy + constants.routes.auth 
+const proxy_files = constants.hosts.proxy + constants.routes.files
 const proxy_config = {
   headers: {
-    'Authorization': 'Basic secret_key'
+    'Authorization': 'Basic ' + process.env.SECRET_TOKEN
   }
 }
 
@@ -44,8 +46,8 @@ router.post('/login',function(req,res) {
 
     var requestBody = {
       'grant_type': 'password',
-      'client_id': 'nodejs-microservice',
-      'client_secret': '78b23b94-79af-476e-84de-13967970950b',
+      'client_id': process.env.KEYCLOAK_SERVICE,
+      'client_secret': process.env.KEYCLOAK_TOKEN,
       'username': username,
       'password': password
     }
@@ -64,7 +66,6 @@ router.post('/login',function(req,res) {
             });
             return;
           }).catch(function(error) {
-            console.log('wwww')
               res.status(401).send({
               'status': "401:Role not foun",
               });

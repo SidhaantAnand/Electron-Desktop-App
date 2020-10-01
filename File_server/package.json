@@ -1,15 +1,16 @@
 {
-  "name": "trigger_webapp",
+  "name": "file_server",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "admin.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "license": "ISC"
 }

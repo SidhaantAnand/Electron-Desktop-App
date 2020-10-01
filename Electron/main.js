@@ -48,8 +48,6 @@ app.on('window-all-closed', function () {
 
 expressApp.use('/', function(req,res,next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:7500')
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Authorization');
   next();
 })
 expressApp.use(bodyParser.urlencoded({ extended: true }));

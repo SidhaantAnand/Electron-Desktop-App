@@ -1,0 +1,10 @@
+{
+	"hosts": {
+		"openwhisk": "http://localhost:8080/auth/realms/demo/protocol/openid-connect/token",
+		"proxy": "http://localhost:7001/"
+	},
+	"routes": {
+		"auth": "auth",
+		"files": "files"
+	}
+}
